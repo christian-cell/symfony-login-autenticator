@@ -17,6 +17,9 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 class SecurityController extends AbstractController
 {
+
+    
+
     /**
      * @Route("/login", name="app_login")
      */
@@ -42,46 +45,15 @@ class SecurityController extends AbstractController
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
     }
 
-    /**
-     * @Route("/signUp",name="signUp")
-     */
-    public function renderLoginPage()
-    {
-      return $this->render("registro.html.twig");
-    }
-
-   
-
     
 
-    /**
-     * @Route("registro/completed",name="registro")
-     */
-    public function CreateNewUser(Request $request , EntityManagerInterface $doctrine , UserPasswordEncoderInterface $passwordEncoder)
-    {
-      $user = new User();
-      $user->setUsername($request->get("username"));
-      $user->setPassword($passwordEncoder->encodePassword($user , $request->get("password")));
-
-      $doctrine->persist($user);
-      $doctrine->flush();
-
-      return $this->render("home/index.html.twig");
-    }
-
-    /**
-     * @Route("/logged" , name="logged")
-     */
-    public function accessLogged()
-    {
-        return $this->render("authorizated.html.twig");
-    }
+    
 
     /**
      * @Route("/profile/auth",name="auth")
      */
     public function renderAuth()
     {
-        return $this->render("authorizated.html.twig");
+        return $this->render("loggedPages/authorizated.html.twig");
     }
 }

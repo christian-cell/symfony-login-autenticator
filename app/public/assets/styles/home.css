@@ -1,0 +1,21 @@
+.container{
+    text-align: center;
+}
+
+.span-container{
+    text-align: center;
+}
+
+.nav-container{
+    text-align: center;
+}
+
+.homeBackgrounContainer{
+    
+    background-image: url("../images/homePokemons.jpg");
+    background-repeat: no-repeat;
+    height: 280px;
+    background-size: 100%;
+    width: 70%;
+    margin:auto
+}
